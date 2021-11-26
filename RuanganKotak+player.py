@@ -1,5 +1,5 @@
 import sys
-
+from random import randrange
 try:
   from OpenGL.GLUT import *
   from OpenGL.GL import *
@@ -17,6 +17,8 @@ down = 0
 left = 0
 right = 0
 
+vertg = 0
+horig = 0
 
 def BgColor():
     glBegin(GL_POLYGON)
@@ -85,9 +87,19 @@ def HoriSplit():
 
     glVertex2f(875, 0) #G
     glVertex2f(875, 500) #H
-
     
     glEnd()
+
+def ghost(kibxg,kibyg,kiaxg,kiayg,kaaxg,kaayg,kabxg,kabyg):
+    global horig, vertg
+    glBegin(GL_QUADS)
+    glColor3ub(200,100,0)
+    glVertex2f(kibxg+horig,kibyg+vertg)
+    glVertex2f(kiaxg+horig,kiayg+vertg)
+    glVertex2f(kaaxg+horig,kaayg+vertg)
+    glVertex2f(kabxg+horig,kabyg+vertg)
+    glEnd()
+
 
 def player(kibx,kiby,kiax,kiay,kaax,kaay,kabx,kaby):
     glBegin(GL_QUADS)
@@ -98,7 +110,7 @@ def player(kibx,kiby,kiax,kiay,kaax,kaay,kabx,kaby):
     glVertex2f(kabx+left+right,kaby+up+down)
     glEnd()
 
-def movement(key, x, y):
+def Player_movement(key, x, y):
     global up,down,left,right
     if key == GLUT_KEY_UP:
         up += 10
@@ -108,6 +120,13 @@ def movement(key, x, y):
         left -= 10
     if key == GLUT_KEY_RIGHT:
         right += 10
+
+def Ghost_movement(value):
+    global vertg, horig
+    vertg = randrange(-10,10,10)
+    horig = randrange(-10,10,10)
+    glutTimerFunc(100,Ghost_movement,10)
+
 
 def iterate():
     glViewport(0, 0, 1000, 500)
@@ -127,6 +146,7 @@ def showScreen():
     HoriSplit()
     VertSplit()
     player(10,10,10,30,30,30,30,10)
+    ghost(200,200,200,230,230,230,230,200)
     glutSwapBuffers()
 
 glutInit()
@@ -136,5 +156,6 @@ glutInitWindowPosition(100, 50)
 wind = glutCreateWindow("Ghost.gl")
 glutDisplayFunc(showScreen)
 glutIdleFunc(showScreen)
-glutSpecialFunc(movement)
+glutSpecialFunc(Player_movement)
+Ghost_movement(10)
 glutMainLoop()
