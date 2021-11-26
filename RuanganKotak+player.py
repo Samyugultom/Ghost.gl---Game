@@ -1,7 +1,22 @@
-from OpenGL.GL import *
-from OpenGL.GLUT import *
-from OpenGL.GLU import *
+import sys
+
+try:
+  from OpenGL.GLUT import *
+  from OpenGL.GL import *
+  from OpenGL.GLU import *
+except:
+  print ('''
+ERROR: PyOpenGL not installed properly.
+        ''')
+  sys.exit()
+
 w,h= 1000,500
+
+up = 0
+down = 0
+left = 0
+right = 0
+
 
 def BgColor():
     glBegin(GL_POLYGON)
@@ -71,10 +86,28 @@ def HoriSplit():
     glVertex2f(875, 0) #G
     glVertex2f(875, 500) #H
 
-    glVertex2f(1000, 0) #G
-    glVertex2f(1000, 500) #H
     
     glEnd()
+
+def player(kibx,kiby,kiax,kiay,kaax,kaay,kabx,kaby):
+    glBegin(GL_QUADS)
+    glColor3ub(0,100,0)
+    glVertex2f(kibx+left+right,kiby+up+down)
+    glVertex2f(kiax+left+right,kiay+up+down)
+    glVertex2f(kaax+left+right,kaay+up+down)
+    glVertex2f(kabx+left+right,kaby+up+down)
+    glEnd()
+
+def movement(key, x, y):
+    global up,down,left,right
+    if key == GLUT_KEY_UP:
+        up += 10
+    if key == GLUT_KEY_DOWN:
+        down -= 10
+    if key == GLUT_KEY_LEFT:
+        left -= 10
+    if key == GLUT_KEY_RIGHT:
+        right += 10
 
 def iterate():
     glViewport(0, 0, 1000, 500)
@@ -93,13 +126,15 @@ def showScreen():
     Border()
     HoriSplit()
     VertSplit()
+    player(10,10,10,30,30,30,30,10)
     glutSwapBuffers()
 
 glutInit()
 glutInitDisplayMode(GLUT_RGBA)
 glutInitWindowSize(1000, 500)
-glutInitWindowPosition(0, 0)
+glutInitWindowPosition(100, 50)
 wind = glutCreateWindow("Ghost.gl")
 glutDisplayFunc(showScreen)
 glutIdleFunc(showScreen)
+glutSpecialFunc(movement)
 glutMainLoop()
