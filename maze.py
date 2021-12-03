@@ -23,6 +23,7 @@ keylocy = 25
 print(keylocy)
 print(keylocx)
 
+ambil_kunci = False
 levels = [""]
 left = 0
 right = 0
@@ -78,15 +79,12 @@ class Draw():
         self.blue = blue
         self.x = x
         self.y = y
-        
         glPointSize(size)
         glBegin(GL_POINTS)
         glColor3f(red,green,blue)
         glVertex2f(x,y)
         glEnd()
 
-### class instance ###
-draw = Draw()
 
 def setup_maze(level):
     global screen_x, screen_y, walls
@@ -98,25 +96,13 @@ def setup_maze(level):
             if character == "X":
               walls.append((screen_x,screen_y))
               draw.dot(15,255,0,0,screen_x,screen_y)
-            #   glPointSize(15)
-            #   glBegin(GL_POINTS)
-            #   glColor3f(255,0,0)
-            #   glVertex2f(screen_x, screen_y)
-            #   glEnd()
-
 
 class Player():
-    def playerk(x,y):
+    def playerk(self,x,y):
         global koorx,koory
-        koorx = x
-        koory = y
+        self.koorx = koorx = x
+        self.koory = koory = y
         draw.dot(14,0,0,200,koorx+left+right,koory+up+down)
-        # glPointSize(14)
-        # glBegin(GL_POINTS)
-        # glColor3f(0,0,200)
-        # glVertex2f(koorx+left+right, koory+up+down)
-        # glEnd()
-
 
     def player_movement(key,x,y):
         global up, down, left, right
@@ -133,43 +119,62 @@ class Player():
         if (koorx+left+right-15, koory+up+down) not in walls:
             if key == GLUT_KEY_LEFT:
                 left -= 15
+        
+        # if (koorx+(left-15)+(right+15), koory+(up+15)+(down-15)) == (keylocx,keylocy):
+        #     exitkey.taken_by_player(keylocx,keylocy)
+        #     print("kunci telah diambil")
+            
+        
+        if (koorx+(left-15)+(right+15), koory+(up+15)+(down-15)) == (koorxg+(left-15)+(right+15), kooryg+(up+15)+(down-15)):
+            print("kunci telah diambil")
 
-    def is_colliding(other):
-        a = koorx+left+right - keylocx
-        b = koory+up+down - keylocy
-        distance = math.sqrt((a**2)+(b**2))
+    # def is_colliding_key(self,other):
+    #     a = self.koorx - other[0]
+    #     b = self.koory- other[1]
+    #     distance = math.sqrt((a**2)+(b**2))
+    #     if distance < 5:
+    #         print("Taken")
+    #         return True
+    #     else:
+    #         return False
 
-        if distance < 5:
-            return True
-        else:
-            return False
+# def check_col():
+#     if player.is_colliding_key((keylocx,keylocy)):
+#         (print("nice"))
 
 class ExitKey():
-    def exitkey():
-        global keylocx,keylocy
-        draw.dot(14,255,255,255,keylocx,keylocy)
-        # glPointSize(14)
-        # glBegin(GL_POINTS)
-        # glColor3f(255,255,255)
-        # glVertex2f(keylocx,keylocy)
-        # glEnd()
+    def exitkey(self,x,y):
+        global keylocx,keylocy,ambil_kunci
+        self.keylocx = keylocx = x
+        self.keylocy = keylocy = y
+        draw.dot(10,255,0,255,keylocx,keylocy)
+        draw.dot(6,255,0,255,keylocx+8,keylocy)
+        draw.dot(6,255,0,255,keylocx+14,keylocy)
+        draw.dot(6,255,0,255,keylocx+20,keylocy)
+        draw.dot(6,255,0,255,keylocx+20,keylocy-3)
+        if (keylocx,keylocy) ==(koorx+(left-15)+(right+15), koory+(up+15)+(down-15)):
+            ambil_kunci = True
+            keylocx += 800
+            keylocy += 300
+            print(ambil_kunci,"kunci telah diambil")
 
-    def taken_by_player(keylocx,keylocy):
-
-        keylocx += 500
-        keylocy += 500
+    def taken_by_player(self,keylocx, keylocy):
+        self.keylocx = keylocx + 500
+        self.keylocy = keylocy + 500
 
 
 class Ghost():
-  def ghost(xg,yg):
-    koorxg = xg
-    kooryg = yg
+  def ghost(self,xg,yg):
+    global koorxg,kooryg
+    self.koorxg = koorxg = xg
+    self.kooryg = kooryg = yg
     draw.dot(14,0,255,255,koorxg+left+right, kooryg+up+down)
-    # glPointSize(14)
-    # glBegin(GL_POINTS)
-    # glColor3f(0,255,255)
-    # glVertex2f(koorxg+left+right, kooryg+up+down)
-    # glEnd()
+
+### class instance ###
+draw = Draw()
+player = Player()
+exitkey = ExitKey()
+ghost1 = Ghost()
 
 def iterate():
     glViewport(0, 0, 1000, 500)
@@ -187,9 +192,9 @@ def showScreen():
     iterate()
     glColor3f(1.0, 0.0, 3.0)
     setup_maze(levels[1])
-    Player.playerk(25,25)
-    Ghost.ghost(400,400)
-    ExitKey.exitkey()
+    player.playerk(25,25)
+    ghost1.ghost(40,40)
+    exitkey.exitkey(keylocx,keylocy)
     glutSwapBuffers()
 
 glutInit()
