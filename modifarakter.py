@@ -131,10 +131,7 @@ class Player():
         draw.dot(4,0.0,0.0,0.0,koorx+3+left+right,koory+4+up+down)
 
         
-        # draw.dot(7,0.0,0.0,0.0,koorx-5+left+right,koory-3+up+down)
-        # draw.dot(7,0.0,0.0,0.0,koorx-4+left+right,koory-3+up+down)
-        # draw.dot(7,0.0,0.0,0.0,koorx-3+left+right,koory-3+up+down)
-        # draw.dot(7,0.0,0.0,0.0,koorx-2+left+right,koory-3+up+down)
+        
         draw.dot(7,0.0,0.0,0.0,koorx-1+left+right,koory-3+up+down)
         draw.dot(7,0.0,0.0,0.0,koorx+left+right,koory-3+up+down)
         draw.dot(7,0.0,0.0,0.0,koorx+1+left+right,koory-3+up+down)
@@ -147,87 +144,11 @@ class Player():
         draw.dot(5,0.0,0.0,0.0,koorx+19+left+right,koory-3+up+down)
 
 
-        # draw.dot(7,0.0,0.0,0.0,koorx+17+left+right,koory-3+up+down)
-        # draw.dot(7,0.0,0.0,0.0,koorx+23+left+right,koory-3+up+down)
-        # draw.dot(7,0.0,0.0,0.0,koorx+28+left+right,koory-3+up+down)
-        # draw.dot(7,0.0,0.0,0.0,koorx+15+left+right,koory-3+up+down)
-
-
-
-
-        # draw.dot(5,0.8,2.0,0.6,koorx+8+left+right,koory-4+up+down)
-
-
-
-
-
+       
         
-
-
-        
-        # draw.dot(9,0.9,0.60,0.70,koorx-2+left+right,koory-2+up+down)
-        # draw.dot(9,0.9,0.60,0.70,koorx-2+left+right,koory+5+up+down)
-        # # draw.dot(8,1.0,1.5,0.3,koorx-2+left+right,koory-2+up+down)
-        # draw.dot(8,0.0,1.0,0.3,koorx+6+left+right,koory+8+up+down)
-        
-        # draw.dot(9,1.0,1.5,0.9,koorx+7.5+left+right,koory+49+up+down)
-        # draw.dot(9,1.0,1.5,0.3,koorx+7.5+left+right,koory+40+up+down)
-        # draw.dot(9,1.0,1.5,0.3,koorx+7.5+left+right,koory+31+up+down)
-        # draw.dot(9,1.0,1.5,0.9,koorx+15+left+right,koory+49+up+down)
-        # draw.dot(9,0.0,0.0,0.0,koorx+15+left+right,koory+40+up+down)
-        # draw.dot(9,1.0,1.5,0.3,koorx+15+left+right,koory+31+up+down)
-        # draw.dot(9,1.0,1.5,0.9,koorx+22.5+left+right,koory+49+up+down)
-        # draw.dot(9,1.0,1.5,0.3,koorx+22.5+left+right,koory+40+up+down)
-        # draw.dot(9,1.0,1.5,0.3,koorx+22.5+left+right,koory+31+up+down)
-        # draw.dot(9,1.0,1.5,0.9,koorx+30+left+right,koory+49+up+down)
-        # draw.dot(9,0.0,0.0,0.0,koorx+30+left+right,koory+40+up+down)
-        # draw.dot(9,1.0,1.5,0.3,koorx+30+left+right,koory+31+up+down)
-
-
-        # draw.dot(9,0.8,0.1,0.3,koorx+7.5+left+right,koory+24+up+down)
-        # draw.dot(9,0.8,0.1,0.3,koorx+7.5+left+right,koory+15+up+down)
-        # draw.dot(9,0.8,0.1,0.3,koorx+7.5+left+right,koory+6+up+down)
-        # draw.dot(9,0.8,0.1,0.3,koorx+15+left+right,koory+24+up+down)
-        # draw.dot(9,0.0,0.0,0.3,koorx+15+left+right,koory+15+up+down)
-        # draw.dot(9,0.8,0.1,0.3,koorx+15+left+right,koory+6+up+down)
-        # draw.dot(9,0.8,0.1,0.3,koorx+22.5+left+right,koory+24+up+down)
-        # draw.dot(9,0.0,0.0,0.3,koorx+22.5+left+right,koory+15+up+down)
-        # draw.dot(9,0.8,0.1,0.3,koorx+22.5+left+right,koory+6+up+down)       
-        # draw.dot(9,0.8,0.1,0.3,koorx+30+left+right,koory+24+up+down)
-        # draw.dot(9,0.8,0.1,0.3,koorx+30+left+right,koory+15+up+down)
-        # draw.dot(9,0.8,0.1,0.3,koorx+30+left+right,koory+6+up+down)
-        # draw.dot(10,1.0,1.5,0.3,koorx+40+left+right,koory+20+up+down)
-        # draw.dot(10,1.0,1.5,0.3,koorx+50+left+right,koory+20+up+down)
-        
-        # draw.dot(11,0.0,0.0,0.0,koorx+49+left+right,koory+9+up+down)
-
-
-        # draw.dot(9,0.0,0.0,0.0,koorx+49+left+right,koory+29+up+down)
+       
         # draw.dot(7,0.0,0.0,0.0,koorx+42+left+right,koory+29+up+down)
         # draw.dot(7,0.0,0.0,0.0,koorx+57+left+right,koory+29+up+down)
-
-
-
-
-
-        # draw.dot(9,0.0,0.0,0.0,koorx+49+left+right,koory+38+up+down)
-        # draw.dot(9,0.0,0.0,0.0,koorx+49+left+right,koory+47+up+down)
-        # draw.dot(9,0.0,0.0,0.0,koorx+49+left+right,koory+56+up+down)
-        # draw.dot(9,0.0,0.0,0.0,koorx+49+left+right,koory+65+up+down)
-
-        # # draw.dot(9,0.0,0.0,0.0,koorx+56+left+right,koory+56+up+down)
-        # # draw.dot(9,0.0,0.0,0.0,koorx+56+left+right,koory+47+up+down)
-
-        # draw.dot(10,0.0,1.5,0.0,koorx+9+left+right,koory-4+up+down)
-        # draw.dot(10,0.0,1.5,0.0,koorx+30+left+right,koory-4+up+down)
-        
-        # # draw.dot(14,0,0.6,0.3,koorx+left+right,koory+up+down)
-        # # draw.dot(14,0,0.6,0.3,koorx+left+right,koory+up+down)
-        # # draw.dot(14,0,0.6,0.3,koorx+left+right,koory+up+down)
-        # # draw.dot(14,0,0.6,0.3,koorx+left+right,koory+up+down)
-        # # draw.dot(14,0,0.6,0.3,koorx+left+right,koory+up+down)
-        # # draw.dot(14,0,0.6,0.3,koorx+left+right,koory+up+down)
-        # # draw.dot(14,0,0.6,0.3,koorx+left+right,koory+up+down)
 
 
     def player_movement(key,x,y):
